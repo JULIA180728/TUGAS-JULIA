@@ -2,16 +2,12 @@
 require_once("config.php");
 
 if (isset($_POST['submit'])) {
-    // Mengambil data dari form
     $isi_puisi = filter_input(INPUT_POST, 'isi_puisi', FILTER_SANITIZE_STRING);
 
-    // Menyiapkan query untuk menyimpan puisi
     $sql = "INSERT INTO puisi (isi_puisi) VALUES (:isi_puisi)";
     $stmt = $db->prepare($sql);
     
-    // Eksekusi query
     if ($stmt->execute([':isi_puisi' => $isi_puisi])) {
-        // Redirect setelah sukses
         header("Location: puisi.php");
         exit();
     } else {
