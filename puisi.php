@@ -1,12 +1,10 @@
 <?php
 require_once("config.php");
 
-// Menyiapkan query untuk mengambil semua puisi
 $sql = "SELECT * FROM puisi";
 $stmt = $db->prepare($sql);
 $stmt->execute();
 
-// Mengambil semua puisi
 $puisi = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
